@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -25,45 +23,28 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Expressway Algorithm Visualizer" },
-      { name: "description", content: "Interactive visualizations of Dijkstra, Kruskal, Bellman-Ford, Fenwick Tree, Bloom Filter and Heap algorithms on the Delhi–Dehradun Expressway network." },
-      { name: "author", content: "Expressway Viz" },
-      { property: "og:title", content: "Expressway Algorithm Visualizer" },
-      { property: "og:description", content: "Interactive graph algorithm playground for highway networks." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
+function RootComponent() {
   return (
     <html lang="en">
       <head>
-        <HeadContent />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Expressway Algorithm Visualizer</title>
+        <meta name="description" content="Interactive visualizations of Dijkstra, Kruskal, Bellman-Ford, Fenwick Tree, Bloom Filter and Heap algorithms on the Delhi–Dehradun Expressway network." />
+        <meta name="author" content="Expressway Viz" />
+        <meta property="og:title" content="Expressway Algorithm Visualizer" />
+        <meta property="og:description" content="Interactive graph algorithm playground for highway networks." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@Lovable" />
       </head>
       <body>
-        {children}
-        <Scripts />
+        <Outlet />
       </body>
     </html>
   );
-}
-
-function RootComponent() {
-  return <Outlet />;
 }
