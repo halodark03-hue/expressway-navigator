@@ -54,14 +54,19 @@ function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => vo
   );
 }
 
+// Create router as singleton
+let router: ReturnType<typeof createRouter> | undefined
+
 export const getRouter = () => {
-  const router = createRouter({
-    routeTree,
-    context: {},
-    scrollRestoration: true,
-    defaultPreloadStaleTime: 0,
-    defaultErrorComponent: DefaultErrorComponent,
-  });
+  if (!router) {
+    router = createRouter({
+      routeTree,
+      context: {},
+      scrollRestoration: true,
+      defaultPreloadStaleTime: 0,
+      defaultErrorComponent: DefaultErrorComponent,
+    });
+  }
 
   return router;
 };
