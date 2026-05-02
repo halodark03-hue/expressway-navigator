@@ -29,22 +29,8 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Expressway Algorithm Visualizer</title>
-        <meta name="description" content="Interactive visualizations of Dijkstra, Kruskal, Bellman-Ford, Fenwick Tree, Bloom Filter and Heap algorithms on the Delhi–Dehradun Expressway network." />
-        <meta name="author" content="Expressway Viz" />
-        <meta property="og:title" content="Expressway Algorithm Visualizer" />
-        <meta property="og:description" content="Interactive graph algorithm playground for highway networks." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@Lovable" />
-      </head>
-      <body>
-        <Outlet />
-      </body>
-    </html>
+    <>
+      <Outlet />
+    </>
   );
 }
